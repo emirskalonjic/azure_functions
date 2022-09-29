@@ -15,7 +15,7 @@ namespace Symphony.Functions
         [FunctionName("HttpTriggerContactUsFunc")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
-            [Queue("contactus")] IAsyncCollector<ContactUs> contactUsQueue,
+            [Queue("contact")] IAsyncCollector<ContactUs> contactQueue,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
@@ -23,7 +23,7 @@ namespace Symphony.Functions
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var contactUs = JsonConvert.DeserializeObject<ContactUs>(requestBody);
 
-            await contactUsQueue.AddAsync(contactUs);
+            await contactQueue.AddAsync(contactUs);
 
             log.LogInformation($"User: {contactUs.User} Email: {contactUs.Email} Message: {contactUs.Message}");
             return new OkObjectResult($"This HTTP triggered function executed successfully.");

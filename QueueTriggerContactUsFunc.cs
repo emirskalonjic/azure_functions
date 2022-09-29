@@ -10,7 +10,7 @@ namespace Symphony.Functions
     {
         [FunctionName("QueueTriggerContactUsFunc")]
         public void Run(
-            [QueueTrigger("contactus", Connection = "AzureWebJobsStorage")]ContactUs contactUs, 
+            [QueueTrigger("contact", Connection = "AzureWebJobsStorage")]ContactUs contactUs, 
             [SendGrid(ApiKey = "SendGridApiKey")] out SendGridMessage message,
             ILogger log)
         {
