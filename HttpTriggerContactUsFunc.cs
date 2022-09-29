@@ -30,7 +30,6 @@ namespace Symphony.Functions
         }
     }
     
-
     public class ContactUs 
     {
         public string User { get; set; }
