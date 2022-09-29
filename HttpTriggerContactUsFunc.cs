@@ -29,6 +29,7 @@ namespace Symphony.Functions
             return new OkObjectResult($"This HTTP triggered function executed successfully.");
         }
     }
+    
 
     public class ContactUs 
     {
